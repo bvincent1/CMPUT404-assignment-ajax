@@ -264,6 +264,9 @@ mouse.mousedraggers.push(function(x,y,clicked,e) {
 function update() {
     //("/world", world, );
     drawFrame();
+    if (E === false){
+        sendJSONXMLHTTPRequest("../world",world,function(data){console.log(data)});
+    }
 }
 
 // 30 frames per second
