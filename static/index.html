@@ -59,7 +59,7 @@ world = {};
 function drawCircle(context,entity) {
     with(context) {
         beginPath();
-        lineWidth = 3;
+        lineWidth = 5;
         var x = entity["x"];
         var y = entity["y"];
         //moveTo(x,y);
@@ -245,8 +245,14 @@ mouse = (function() {
     return self;
 })();
 
+function getRandColor(){
+    var colors = ["CC0000", "CC0033", "CC0066", "CC0099", "CC00CC", "CC00FF",
+        "CC3300", "CC3333", "CC3366", "CC3399", "CC33CC", "CC33FF",
+        "CC6600", "CC6633", "CC6666", "CC6699", "CC66CC", "CC66FF"];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
 // Add the application specific mouse listeners!
-//XXX: TODO Make these prettier! merp :(
 mouse.mousedowners.push(function(x,y,clicked,e) {
     addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
 });
@@ -256,7 +262,7 @@ mouse.mouseuppers.push(function(x,y,clicked,e) {
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
+    addEntityWithoutName({'x':x,'y':y,'colour':"#"+getRandColor(),
                           'radius':10});
 });
 
